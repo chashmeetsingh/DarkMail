@@ -79,3 +79,11 @@
 }
 
 %end
+
+%hook MFApplicationSceneController
+
+- (void)_setStatusBarStyle:(long long)arg1 animated:(_Bool)arg2 { 
+    %orig(1, YES);
+}
+
+%end
