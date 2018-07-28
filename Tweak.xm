@@ -4,6 +4,7 @@
 
 static NSString *domainString = @"com.chashmeet.darkmail";
 static NSString *notificationString = @"com.chashmeet.darkmail/preferences.changed";
+static NSString *settingsPath = @"/User/Library/Preferences/com.chashmeet.darkmail.plist";
 
 static BOOL enableTweak = YES;
 
@@ -110,9 +111,11 @@ static BOOL enableTweak = YES;
 
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {	
 
-	enableTweak = [(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"enableTweak" inDomain:domainString] boolValue];
-	NSLog(@"called: %d", enableTweak);
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:settingsPath] ? : [NSMutableDictionary dictionary];
+    NSLog(@"%@", settings.description);
 
+    enableTweak = settings[@"enableTweak"] && [settings[@"enableTweak"] boolValue];
+	NSLog(@"called: %d", enableTweak);
 }
 
 %ctor {
