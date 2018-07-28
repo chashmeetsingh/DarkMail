@@ -13,7 +13,7 @@
 			<key>defaults</key>
 			<string>com.chashmeet.darkmail</string>
 			<key>key</key>
-			<string>enable</string>
+			<string>enableTweak</string>
 			<key>label</key>
 			<string>Enable Tweak</string>
 			<key>PostNotification</key>

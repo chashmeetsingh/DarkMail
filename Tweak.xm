@@ -110,14 +110,17 @@ static BOOL enableTweak = YES;
 
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {	
 
-	enableTweak = [(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"enable" inDomain:domainString] boolValue];
+	enableTweak = [(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"enableTweak" inDomain:domainString] boolValue];
 	NSLog(@"called: %d", enableTweak);
 
 }
 
 %ctor {
-	notificationCallback(NULL, NULL, NULL, NULL, NULL);
+	@autoreleasepool {
+		NSLog(@"init");
+		notificationCallback(NULL, NULL, NULL, NULL, NULL);
 
-	//register for notifications
-	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)notificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
+		//register for notifications
+		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)notificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
+	}
 }
