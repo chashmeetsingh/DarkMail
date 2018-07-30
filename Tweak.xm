@@ -83,6 +83,10 @@ static BOOL enableTweak = YES;
 	if (!enableTweak) return;
 	self.toolbar.barTintColor = [UIColor blackColor];
 	self.toolbar.tintColor = [UIColor whiteColor];
+	self.navigationBar.barTintColor = [UIColor blackColor];
+	self.navigationBar.tintColor = [UIColor whiteColor];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]}];
+	[[UINavigationBar appearance] setLargeTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
 %end
@@ -105,6 +109,25 @@ static BOOL enableTweak = YES;
 	if (!enableTweak) return;
 	self.backgroundView.backgroundColor = [UIColor blackColor];
 	self.titleLabel.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFCollapsibleHeaderView
+
+- (void)layoutSubviews {
+	%orig;
+	self.superTitleLabel.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFCollapsibleHeaderContentView
+
+- (void)setFont:(id)arg1 {
+	%orig;
+	self.textView.textColor = [UIColor whiteColor];
+	return %orig;
 }
 
 %end

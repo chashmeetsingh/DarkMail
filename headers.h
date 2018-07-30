@@ -30,3 +30,11 @@
 	@property(retain, nonatomic) UIView *backgroundView;
 	@property(retain, nonatomic) UILabel *titleLabel;
 @end
+
+@interface MFCollapsibleHeaderView
+	@property(retain, nonatomic) UILabel *superTitleLabel;
+@end
+
+@interface MFCollapsibleHeaderContentView
+	@property(retain, nonatomic) UITextView *textView;
+@end
