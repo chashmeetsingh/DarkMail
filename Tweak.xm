@@ -85,7 +85,7 @@ static BOOL enableTweak = YES;
 	self.toolbar.tintColor = [UIColor whiteColor];
 	self.navigationBar.barTintColor = [UIColor blackColor];
 	self.navigationBar.tintColor = [UIColor whiteColor];
-	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]}];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 	[[UINavigationBar appearance] setLargeTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
