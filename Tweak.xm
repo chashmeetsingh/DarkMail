@@ -132,6 +132,15 @@ static BOOL enableTweak = YES;
 
 %end
 
+%hook MFMailboxFilterPickerControl
+
+- (void)layoutSubviews {
+	%orig;
+	self.titleLabel.textColor = [UIColor whiteColor];
+}
+
+%end
+
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {	
 
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:settingsPath] ? : [NSMutableDictionary dictionary];

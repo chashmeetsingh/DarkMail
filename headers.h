@@ -38,3 +38,8 @@
 @interface MFCollapsibleHeaderContentView
 	@property(retain, nonatomic) UITextView *textView;
 @end
+
+@interface MFMailboxFilterPickerControl
+	@property(retain, nonatomic) UILabel *filtersLabel;
+	@property(retain, nonatomic) UILabel *titleLabel; 
+@end
