@@ -50,7 +50,6 @@ static BOOL enableTweak = YES;
 	[[UINavigationBar appearance] setLargeTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 	self.toolbar.barTintColor = [UIColor blackColor];
 	self.toolbar.tintColor = [UIColor whiteColor];
-	[[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTextColor:[UIColor whiteColor]];
 }
 
 %end
