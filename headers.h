@@ -43,3 +43,6 @@
 	@property(retain, nonatomic) UILabel *filtersLabel;
 	@property(retain, nonatomic) UILabel *titleLabel; 
 @end
+
+@interface MFAtomSearchBar : UISearchBar
+@end

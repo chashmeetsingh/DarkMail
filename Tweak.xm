@@ -50,6 +50,7 @@ static BOOL enableTweak = YES;
 	[[UINavigationBar appearance] setLargeTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 	self.toolbar.barTintColor = [UIColor blackColor];
 	self.toolbar.tintColor = [UIColor whiteColor];
+	[[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTextColor:[UIColor whiteColor]];
 }
 
 %end
@@ -141,13 +142,22 @@ static BOOL enableTweak = YES;
 
 %end
 
+%hook MFAtomSearchBar
+
+- (id)_textColor:(_Bool)arg1 {
+	self.tintColor = [UIColor whiteColor];
+	return [UIColor whiteColor];
+}
+
+%end
+
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {	
 
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:settingsPath] ? : [NSMutableDictionary dictionary];
-    NSLog(@"%@", settings.description);
+    // NSLog(@"%@", settings.description);
 
     enableTweak = settings[@"enableTweak"] && [settings[@"enableTweak"] boolValue];
-	NSLog(@"called: %d", enableTweak);
+	// NSLog(@"called: %d", enableTweak);
 }
 
 %ctor {
