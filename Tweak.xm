@@ -117,6 +117,7 @@ static BOOL enableTweak = YES;
 
 - (void)layoutSubviews {
 	%orig;
+	if (!enableTweak) return;
 	self.superTitleLabel.textColor = [UIColor whiteColor];
 }
 
@@ -126,6 +127,7 @@ static BOOL enableTweak = YES;
 
 - (void)setFont:(id)arg1 {
 	%orig;
+	if (!enableTweak) return %orig;;
 	self.textView.textColor = [UIColor whiteColor];
 	return %orig;
 }
@@ -136,6 +138,7 @@ static BOOL enableTweak = YES;
 
 - (void)layoutSubviews {
 	%orig;
+	if (!enableTweak) return;
 	self.titleLabel.textColor = [UIColor whiteColor];
 }
 
@@ -144,6 +147,7 @@ static BOOL enableTweak = YES;
 %hook MFAtomSearchBar
 
 - (id)_textColor:(_Bool)arg1 {
+	if (!enableTweak) return %orig;
 	self.tintColor = [UIColor whiteColor];
 	return [UIColor whiteColor];
 }
