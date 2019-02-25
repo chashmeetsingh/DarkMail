@@ -154,6 +154,36 @@ static BOOL enableTweak = YES;
 
 %end
 
+@interface MFSwipableTableViewCell: UITableViewCell
+@end
+
+@interface MailboxContentViewCell: MFSwipableTableViewCell
+@end
+
+%hook MailboxContentViewCell
+
+- (id) _dateLabelTextColor {
+	if (!enableTweak) return %orig;
+	self.backgroundColor = [UIColor blackColor];
+	self.contentView.backgroundColor = [UIColor blackColor];
+	return [UIColor whiteColor];
+}
+
+%end
+
+@interface MFSimpleLabel: UILabel
+@end
+
+%hook MFSimpleLabel
+
+- (void)setAttributedText:(id)arg1 {
+	%orig;
+	if (!enableTweak) return %orig;
+	self.textColor = [UIColor whiteColor];
+}
+
+%end
+
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {	
 
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:settingsPath] ? : [NSMutableDictionary dictionary];
