@@ -6,7 +6,7 @@ static NSString *domainString = @"com.chashmeet.darkmail";
 static NSString *notificationString = @"com.chashmeet.darkmail/preferences.changed";
 static NSString *settingsPath = @"/User/Library/Preferences/com.chashmeet.darkmail.plist";
 
-static BOOL enableTweak = YES;
+static BOOL enableTweak = NO;
 
 %hook MailboxTableCell
 
@@ -154,12 +154,6 @@ static BOOL enableTweak = YES;
 
 %end
 
-@interface MFSwipableTableViewCell: UITableViewCell
-@end
-
-@interface MailboxContentViewCell: MFSwipableTableViewCell
-@end
-
 %hook MailboxContentViewCell
 
 - (id) _dateLabelTextColor {
@@ -171,15 +165,84 @@ static BOOL enableTweak = YES;
 
 %end
 
-@interface MFSimpleLabel: UILabel
-@end
-
 %hook MFSimpleLabel
 
 - (void)setAttributedText:(id)arg1 {
 	%orig;
-	if (!enableTweak) return %orig;
+	if (!enableTweak) return;
 	self.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFSwipableTableView
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFConversationItemHeaderBlock
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFExpandableCaptionView
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFModernAtomView
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.titleLabel.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFCaptionLabel
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFModernLabelledAtomList
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.labelTextColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] ;
+}
+
+%end
+
+%hook MFMessageHeaderMessageInfoBlock
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+	self.subjectTextView.textColor = [UIColor whiteColor];
+	self.timestampLabel.textColor = [UIColor whiteColor];
 }
 
 %end

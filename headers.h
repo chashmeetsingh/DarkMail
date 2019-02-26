@@ -46,3 +46,38 @@
 
 @interface MFAtomSearchBar : UISearchBar
 @end
+
+@interface MFSwipableTableViewCell: UITableViewCell
+@end
+
+@interface MailboxContentViewCell: MFSwipableTableViewCell
+@end
+
+@interface MFSimpleLabel: UILabel
+@end
+
+@interface MFSwipableTableView: UITableView
+@end
+
+@interface MFConversationItemHeaderBlock: UIView
+@end
+
+@interface MFExpandableCaptionView: UIView
+@end
+
+@interface MFModernAtomView
+	@property UILabel *titleLabel;
+@end
+
+@interface MFCaptionLabel
+	@property UIColor *textColor;
+@end
+
+@interface MFModernLabelledAtomList
+	@property UIColor *labelTextColor;
+@end
+
+@interface MFMessageHeaderMessageInfoBlock: UIView
+	@property UITextView *subjectTextView;
+	@property UILabel *timestampLabel;
+@end

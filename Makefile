@@ -1,6 +1,6 @@
 TARGET=iphone::11.2:11.0
 ARCHS=arm64
-THEOS_DEVICE_IP=192.168.0.3
+THEOS_DEVICE_IP=192.168.0.30
 
 include $(THEOS)/makefiles/common.mk
 
