@@ -247,6 +247,209 @@ static BOOL enableTweak = NO;
 
 %end
 
+%hook WKWebView
+
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFMailComposeNavigationBarTitleView
+
+- (void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	MSHookIvar<UILabel *>(self, "_titleLabel").textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFComposeTextContentView
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFConversationViewController
+
+-(void)viewDidLayoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.view.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFSearchSuggestionsViewController
+
+-(void)viewDidLayoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.view.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFSearchSuggestionsTableViewCell
+
+-(void)updateConstraints {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+	MSHookIvar<UILabel *>(self, "_title").textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook SearchScopeControl
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook UITableViewHeaderFooterView
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.textLabel.textColor = [UIColor whiteColor];
+	self.contentView.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:0.5];
+}
+
+%end
+
+%hook MFMailComposeToField
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFHeaderLabelView
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFComposeRecipientTextView
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+	self.typingTextColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFComposeSubjectView
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+	self.textView.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFComposeMultiView
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MFComposeFromView
+
+-(id)_accountLabel {
+	%orig;
+	if(!enableTweak) return %orig;
+	self.backgroundColor = [UIColor blackColor];
+	MSHookIvar<UILabel *>(self, "_accountLabel").textColor = [UIColor whiteColor];
+	return %orig;
+}
+
+%end
+
+%hook MFRecipientTableViewCell
+
+-(id)recipient {
+	%orig;
+	if(!enableTweak) return %orig;
+	self.backgroundColor = [UIColor blackColor];
+	return %orig;
+}
+
+-(id)tintColor {
+	if(!enableTweak) return %orig;
+	return [UIColor whiteColor];
+}
+
+-(id)activeConstraints {
+	%orig;
+	if(!enableTweak) return %orig;
+	self.titleLabel.textColor = [UIColor whiteColor];
+	self.detailLabel.textColor = [UIColor whiteColor];
+	return %orig;
+}
+
+%end
+
+%hook MessageSuggestionBannerView
+
+-(void)reloadData {
+	%orig;
+	if(!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+}
+
+%end
+
+%hook MessageSuggestionTitleControl
+
+-(void)tintColorDidChange {
+	%orig;
+	if(!enableTweak) return;
+	self.titleLabel.textColor = [UIColor whiteColor];
+}
+
+%end
+
+%hook MFCollapsedMessageCell
+
+-(void)layoutSubviews {
+	%orig;
+	if(!enableTweak) return;
+	self.cellBackgroundView.backgroundColor = [UIColor darkGrayColor];
+	self.senderLabel.textColor = [UIColor whiteColor];
+	self.summaryLabel.textColor = [UIColor whiteColor];
+	self.timestampLabel.textColor = [UIColor whiteColor];
+}
+
+%end
+
 static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {	
 
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:settingsPath] ? : [NSMutableDictionary dictionary];

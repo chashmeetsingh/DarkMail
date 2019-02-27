@@ -81,3 +81,66 @@
 	@property UITextView *subjectTextView;
 	@property UILabel *timestampLabel;
 @end
+
+@interface WKWebView: UIView
+@end
+
+@interface MFComposeTextContentView: UIView
+@end
+
+@interface MFConversationViewController: UIViewController
+@end
+
+@interface MFSearchSuggestionsViewController: UIViewController
+@end
+
+@interface MFSearchSuggestionsTableViewCell: UITableViewCell
+@end
+
+@interface SearchScopeControl: UIView
+@end
+
+@interface MFMailComposeToField: UIView
+@end
+
+@interface MFHeaderLabelView: UILabel
+@end
+
+@interface MFComposeRecipientTextView: UIView
+	@property UIColor *typingTextColor;
+@end
+
+@interface MFComposeSubjectView: UIView
+	@property UITextView *textView;
+@end
+
+@interface MFComposeMultiView: UIView
+@end
+
+@interface MFComposeFromView: UIView
+@end
+
+@interface MFRecipientTableViewCell: UIView
+	@property UILabel *titleLabel;
+	@property UILabel *detailLabel;
+@end
+
+@interface MessageSuggestionBannerView: UIView
+@end
+
+@interface MessageSuggestionTitleControl: UIView
+	@property UILabel *titleLabel;
+@end
+
+@interface MFVibrantCardView: UIView
+@end
+
+@interface UIDateLabel: UILabel
+@end
+
+@interface MFCollapsedMessageCell: UIView
+	@property MFVibrantCardView *cellBackgroundView;
+	@property UILabel *senderLabel;
+	@property UILabel *summaryLabel;
+	@property UIDateLabel *timestampLabel;
+@end
