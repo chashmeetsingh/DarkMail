@@ -163,6 +163,13 @@ static BOOL enableTweak = NO;
 	return [UIColor whiteColor];
 }
 
+- (void)layoutSubviews {
+	%orig;
+	if (!enableTweak) return;
+	self.backgroundColor = [UIColor blackColor];
+	self.contentView.backgroundColor = [UIColor blackColor];
+}
+
 %end
 
 %hook MFSimpleLabel

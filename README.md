@@ -17,8 +17,8 @@ Disable Mail App from Eclipse X
 
 <table>
   <tr>
-    <td><img src="https://imgur.com/3jHQPs5.jpg" height = "480" width="270"></td>
-    <td><img src="https://imgur.com/LEVgGhc.jpg" height = "480" width="270"></td>
-    <td><img src="https://imgur.com/1SiHAcB.jpg" height = "480" width="270"></td>
+    <td><img src="https://imgur.com/GQWiJut.jpg" height = "480" width="270"></td>
+    <td><img src="https://imgur.com/gS3vjYi.jpg" height = "480" width="270"></td>
+    <td><img src="https://imgur.com/B78jN8p.jpg" height = "480" width="270"></td>
   </tr>
 </table>
